@@ -60,10 +60,17 @@ while 1:
     for badguy in badguys:
         if badguy[0] < -64:
             badguys.pop(index)
-        badguy[0] -= 7
+        badguy[0] -= 7        
+        badrect = pygame.Rect(badguyimg.get_rect())
+        badrect.top = badguy[1]
+        badrect.left = badguy[0]
+        if badrect.left < 64 :
+            healthvalue -= random.randint(5,20)
+            badguys.pop(index)
         index += 1
     for badguy in badguys:
         screen.blit(badguyimg, badguy)
+
 
 
     pygame.display.flip()
